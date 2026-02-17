@@ -1,0 +1,95 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+@keyframes slideUp {
+    from { transform: translate(-50%, 100%); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+#added-toast {
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+/* Esconder barra de rolagem horizontal mas permitir rolar */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Animação do Modal */
+#cart-modal {
+    transition: opacity 0.3s ease;
+}
+
+#cart-sidebar {
+    transition: transform 0.3s ease;
+}
+
+.cart-hidden #cart-sidebar {
+    transform: translateX(100%);
+}
+
+.cart-hidden {
+    opacity: 0; 
+    pointer-events: none;
+}
+
+.cart-visible {
+    opacity: 1; 
+    pointer-events: auto;
+}
+
+.cart-visible #cart-sidebar {
+    transform: translateX(0);
+}
+
+.frete-banner {
+    animation: pulse 2s infinite;
+    -webkit-animation: pulse 2s infinite;
+    font: 1.8em sans-serif;
+}
+
+.preco {
+  font-family: monospace;
+}
+
+.header-cart{
+    position: relative;
+    background-color: black;
+    color: white;
+}
+
+.header-cart:hover .cart-text {
+    max-width: 200px;   /* largura suficiente para "Abrir Carrinho" */
+    padding-left: 0.75rem;  /* px-3 */
+    padding-right: 0.75rem; /* px-3 */
+    margin-left: 0.5rem;    /* espaço entre ícone e texto */
+}
+
+
+a#consulta_frete {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: rgb(126, 126, 126);
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+a#consulta_frete:hover {
+    text-decoration: underline;
+    background-color: lightgrey;
+    color: black;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}

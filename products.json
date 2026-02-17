@@ -1,0 +1,72 @@
+{
+  "PRODUCTS_DATA": [
+    {
+      "id": 1,
+      "category": "Tags",
+      "title": "Mini Tag Padrão",
+      "image": "images/produtos/mini-tag-padrao.png",
+      "specs": "4x5cm • Frente e verso • Couche 250g",
+      "options": [
+        {"qtd": 200, "price": 130.00},
+        {"qtd": 500, "price": 185.00},
+        {"qtd": 1000, "price": 210.00},
+        {"qtd": 2000, "price": 265.00}
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Tags",
+      "title": "Tag Retangular Padrão",
+      "image": "images/produtos/tag-retangular-padrao.png",
+      "specs": "5x9cm • Frente e verso • Couche 250g",
+      "options": [
+        {"qtd": 100, "price": 135.00},
+        {"qtd": 250, "price": 150.00},
+        {"qtd": 500, "price": 205.00},
+        {"qtd": 1000, "price": 240.00}
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Tags",
+      "title": "Tag com corte especial",
+      "image": "images/produtos/tag-corte-especial.png",
+      "specs": "5x9cm • Frente e verso • Couche 250g",
+      "options": [
+        {"qtd": 100, "price": 999.00},
+        {"qtd": 250, "price": 999.00},
+        {"qtd": 500, "price": 999.00},
+        {"qtd": 1000, "price": 999.00}
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Cartões",
+      "title": "Cartões de Visita Padrão",
+      "image": "images/produtos/cartao-visita-padrao.png",
+      "specs": "9x5cm • Frente e verso • Couche 250g",
+      "options": [
+        {"qtd": 100, "price": 135.00},
+        {"qtd": 250, "price": 150.00},
+        {"qtd": 500, "price": 170.00},
+        {"qtd": 1000, "price": 190.00}
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Adesivos",
+      "title": "Adesivo Lacre Redondo",
+      "image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&q=80&w=600",
+      "specs": "3x3cm • Vinil",
+      "options": [
+        {"qtd": 100, "price": 45.00},
+        {"qtd": 500, "price": 120.00}
+      ]
+    }
+  ],
+  "CATEGORIES": [
+    "Tags", "Cartões", "Adesivos", "Outros"
+  ],
+  "ACTIVE_CATEGORY": "Tags",
+  "WHATSAPP_NUMBER": "5584991969155"
+}
