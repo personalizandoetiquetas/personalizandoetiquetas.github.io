@@ -12,20 +12,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
+        body{
+            box-sizing: border-box;
+        }
         @import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap');
         @keyframes shine {
-        0% {
-            background-position: -250% center;
+            0% {
+                background-position: -250% center;
+            }
+            100% {
+                background-position: 250% center;
+            }
         }
-        100% {
-            background-position: 250% center;
-        }
-        }
+
         /* .a:nth-child(even) {
             border: red solid 3px;
         }
         .a:nth-child(odd) {
             border: blue solid 3px;
+        } */
+
+        /* .a{
+            background-color: #ebc4cb;
         } */
 
     </style>
@@ -35,6 +43,8 @@
 </head>
 <body class="bg-pink-100 m-0 p-0">
     <main class="max-w-3xl h-screen bg-white m-auto shadow-2xl">
+
+        <!-- Cabeçalho do site -->
         <header class="
             bg-white bg-[url('images/tags-400x1320px.png')] bg-cover bg-right
             text-white
@@ -47,14 +57,15 @@
             flex-wrap
             "
             >
-            <div class="a sm:ml-20 flex-row w-[170px] lg:w-[600px]">
+
+            <div class="a sm:ml-20 md:ml-40 flex flex-col items-center w-[200px] lg:w-[220px]">
+                <!-- Estrelas -->
                 <div class="
                 a
-                h-[30px] w-[170px]
-                sm:w-[230px] md:w-[230px] lg:w-[600px]
+                h-[30px] w-[155px]
                 flex items-center justify-start gap-1">
                     <div class="flex items-center gap-1">
-                        <div class="a flex items-center justify-center gap-0.5 md:w-[180px] lg:w-[210px]">
+                        <div class="a flex items-center justify-center gap-0.5 w-[150px]">
                             <span class="material-icons-outlined
                                 text-1xl lg:text-2xl
                                 inline-block
@@ -139,118 +150,242 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Título -->
                 <div class="
                 a
                 text-black text-left
                 font-bold font-[Passion+One] leading-tight
-                text-lg md:text-xl lg:text-2xl 
-                h-[60px] w-[165px] lg:h-[70px]
-                sm:w-[180px] md:w-[200px] lg:w-[240px]
+                text-lg
+                h-[60px] w-[162px] lg:h-[70px]
                 flex items-center justify-center gap-1">
-                    O toque final
-                    que sua marca
-                    precisa!
+                    O toque final que
+                    sua marca precisa!
                 </div>
 
+                <!-- Botão CTA -->
                 <div class="
                     a
-                    h-[30px] w-[150px]
-                    sm:w-[240px] md:w-[230px] lg:w-[400px]
+                    h-[20px] w-[120px]
                     ">
-                    <a class="bg-pink-500 inline
-                    hover:bg-pink-200 
-                    text-white text-[12px] font-bold text-center
+                    <a class="bg-pink-400 inline
+                    hover:bg-pink-500 
+                    text-white text-[16px] font-bold text-center
                     flex items-center justify-center gap-1
-                    sm:text-[13px] md:text-[15px] lg:text-[17px]
-                    sm:max-w-[160px] md:max-w-[180px] lg:max-w-[210px]
+                    text-[10px]
                     flex-row
-                    hover:text-pink-500
 
-                    py-2
+                    py-1
 
                     rounded-[8px]
                     cursor-pointer
-                    transition-all">ENCOMENDAR AGORA</a>
+                    transition-all">Ver Catálogo</a>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- Produto Mais Vendido -->
+        <section id="principal-product" class="
+            a
+            grid grid-cols-2 gap-4
+            bg-[linear-gradient(180deg,#fff4f6,#ffffff)]
+            
+            ">
+            <!-- Imagem do Produto Principal -->
+            <div class="
+            a
+            grid
+            grid-template-rows-[10px_1fr_10px]
+            ">
+                <div class="
+                    a
+                    row-start-2 row-end-3
+                    bg-[url('images/tags-400x1320px.png')] bg-cover bg-right
+                    h-[330px] w-full
+                    rounded-r-[10px]
+                    ">
+                
                 </div>
             </div>
-        </header>
-        <section id="principal-product">
-            <img src="images/banner-3.png" alt="">
+
+            <!-- Detalhes do Produto Principal -->
+            <div class="
+            a
+            h-[330px] w-full
+            grid items-center justify-center
+            grid-cols-3
+            grid-rows-12
+            ">
+                <div class="
+                a
+                col-span-3 row-start-1 row-end-3
+                h-full
+                flex items-center gap-1
+                ">
+                    <div class="
+                    flex items-center gap-1
+                    justify-center
+                    bg-[#FF8C0F]
+                    rounded-full
+                    w-[130px]
+                    h-[25px]
+                    font-bold font-[Inter]
+                    tracking-wider
+                    text-[11px]
+                    text-white
+                    text-center
+                    ">
+                        <span class="material-icons-outlined
+                            text-xl
+                            inline-block
+                            transition-all
+                            duration-600
+                            ease-in-out
+                            hover:scale-110
+                            active:scale-95
+                            bg-[linear-gradient(145deg,#fffbe6_0%,#facc15_20%,#f59e0b_40%,#facc15_60%,#fff1a6_80%,#b45309_100%)]
+                            bg-[length:250%_auto]
+                            bg-clip-text
+                            text-transparent
+                            animate-[shine_5s_ease-in-out_infinite]
+                            ">
+                            star
+                        </span>
+                        MAIS VENDIDO
+                    </div>
+                    
+                </div>
+                <div class="a col-span-3 row-start-3 row-end-11 h-full">
+                    Mini Tag<br>
+                    - A partir de R$130,00 <br>
+                    Frente e verso <br>
+                    Papel Couche 250g <br>
+                    Verniz Frente <br>
+                    100 <br>
+                    250 <br>
+                    500 <br>
+                </div>
+                <div class="a h-full
+                col-span-3 row-start-11 row-end-13
+                flex items-center flex-wrap justify-start gap-1">
+                    <div class="
+                    flex items-center gap-1
+                    justify-center
+                    bg-pink-600 hover:bg-pink-700
+                    rounded-full
+                    font-bold font-[Inter]
+                    tracking-wider
+                    text-[9px]
+                    text-white
+                    text-center
+                    w-[120px] h-[20px] 
+                    transition duration-200
+                    cursor-pointer
+                    ">
+                    <a href="#" class="
+                    w-full h-full
+                    flex items-center justify-center
+                    ">COMPRAR ESSE</a>
+                    </div>
+
+                    <div class="
+                    flex items-center gap-1
+                    justify-center
+                    bg-pink-400 hover:bg-pink-500
+                    rounded-full
+                    font-bold font-[Inter]
+                    tracking-wider
+                    text-[9px]
+                    text-white
+                    text-center
+                    w-[120px] h-[20px]
+                    transition duration-200
+                    cursor-pointer
+                    ">
+                    <a href="#" class="
+                    w-full h-full
+                    flex items-center justify-center
+                    ">MAIS OPÇÕES</a>
+                    </div>
+                </div>
+            </div>
+            
         </section>
+
+        <!-- Seção de Características -->
         <section id="section-features" class="max-w-4xl mx-auto text-gray-400">
             <div class="
                 a
                 h-[60px] w-full
                 sm:h-[100px] lg:h-[100px]
                 items-center">
-                    <!-- <img src="images/banner-2.png"> -->
-                    <div class="w-full flex justify-center px-2">
-                        <div class="w-full max-w-3xl
-                                    bg-pink-50 backdrop-blur-sm
-                                    rounded-2xl sm:rounded-3xl
-                                    shadow-[0_0px_5px_rgba(237,155,173,0.7)]
-                                    px-2 py-2 sm:px-10 sm:py-4">
+                    <div class="w-full flex justify-center px-0 mt-4">
+                        <div class="w-full bg-[#fff4f6] flex items-center m-auto justify-center px-3">
+                            <div class="w-full max-w-md
+                                    bg-[#fff4f6] backdrop-blur-sm
+                                    rounded-md
+
+                                    px-2 py-2">
 
                             <div class="flex items-center justify-between gap-3 sm:gap-6">
 
                             <!-- Item 1 -->
-                            <div class="flex items-center gap-1 sm:gap-4 min-w-0">
-                                <div class="w-10 h-10 sm:w-14 sm:h-14 
+                            <div class="flex items-center gap-1 min-w-0">
+                                <div class="w-7 h-7 
                                             flex items-center justify-center 
-                                            rounded-xl sm:rounded-2xl
-                                            bg-white text-pink-500 shadow-sm">
-                                <i data-lucide="file-pen-line" class="w-7 h-7"></i>
+                                            rounded-full
+                                            bg-[#FFD4D8] text-black shadow-sm">
+                                <i data-lucide="file-pen-line" class="w-4 h-4"></i>
                                 </div>
                                 <div class="min-w-0">
-                                <p class="font-semibold text-gray-800 text-[10px] sm:text-[15px] leading-tight">
+                                <p class="font-semibold text-gray-800 text-[10px] leading-tight">
                                     Personalizado
                                 </p>
-                                <p class="text-gray-500 text-[8px] sm:text-[12px] leading-tight truncate">
+                                <p class="text-gray-500 text-[8px] leading-tight truncate">
                                     do seu jeito
                                 </p>
                                 </div>
                             </div>
 
                             <!-- Divisor -->
-                            <div class="h-8 sm:h-12 w-px bg-rose-200"></div>
+                            <div class="h-8 w-px bg-rose-200"></div>
 
                             <!-- Item 2 -->
-                            <div class="flex items-center gap-1 sm:gap-4 min-w-0">
-                                <div class="w-10 h-10 sm:w-14 sm:h-14 
+                            <div class="flex items-center gap-1 min-w-0">
+                                <div class="w-7 h-7 
                                             flex items-center justify-center 
-                                            rounded-xl sm:rounded-2xl
-                                            bg-white text-pink-500 shadow-sm">
-                                <i data-lucide="truck" class="w-7 h-7"></i>
+                                            rounded-full
+                                            bg-[#FFD4D8] text-black shadow-sm">
+                                <i data-lucide="truck" class="w-4 h-4"></i>
                                 </div>
                                 <div class="min-w-0">
-                                <p class="font-semibold text-gray-800 text-[10px] sm:text-[15px] leading-tight">
+                                <p class="font-semibold text-gray-800 text-[10px] leading-tight">
                                     Enviamos
                                 </p>
-                                <p class="text-gray-500 text-[8px] sm:text-[12px] leading-tight truncate">
-                                    para todo
-                                </p>
-                                <p class="text-gray-500 text-[8px] sm:text-[12px] leading-tight truncate">
-                                    o Brasil
+                                <p class="text-gray-500 text-[8px] leading-tight truncate">
+                                    para todo o Brasil
                                 </p>
                                 </div>
                             </div>
 
                             <!-- Divisor -->
-                            <div class="h-8 sm:h-12 w-px bg-rose-200"></div>
+                            <div class="h-8 w-px bg-rose-200"></div>
 
                             <!-- Item 3 -->
-                            <div class="flex items-center gap-1 sm:gap-4 min-w-0">
-                                <div class="w-10 h-10 sm:w-14 sm:h-14 
+                            <div class="flex items-center gap-1 min-w-0">
+                                <div class="w-7 h-7 
                                             flex items-center justify-center 
-                                            rounded-xl sm:rounded-2xl
-                                            bg-white text-pink-500 shadow-sm">
-                                <i data-lucide="award" class="w-7 h-7"></i>
+                                            rounded-full
+                                            bg-[#FFD4D8] text-black shadow-sm">
+                                <i data-lucide="award" class="w-4 h-4"></i>
                                 </div>
                                 <div class="min-w-0">
-                                <p class="font-semibold text-gray-800 text-[10px] sm:text-[15px] leading-tight">
+                                <p class="font-semibold text-gray-800 text-[10px] leading-tight">
                                     Papel Premium
                                 </p>
-                                <p class="text-gray-500 text-[8px] sm:text-[12px] leading-tight truncate">
+                                <p class="text-gray-500 text-[8px] leading-tight truncate">
                                     Couché 250g
                                 </p>
                                 </div>
@@ -258,9 +393,84 @@
 
                             </div>
                         </div>
+                        </div>
+
                     </div>
             </div>
         </section>
+
+        <!-- <section id="como_funciona">
+            <div>Como Funciona</div>
+            <div class="
+            w-full
+            flex justify-center items-center gap-4
+            ">
+                <div>
+                    <img src="images/como-funciona-1.png" alt="">
+                    <div class="flex items-center gap-1 min-w-0">
+                            <div class="w-7 h-7 
+                                            flex items-center justify-center 
+                                            rounded-full
+                                            bg-[#FFD4D8] text-black shadow-sm">
+                                <div class="w-4 h-4 flex items-center justify-center">1</div>
+                                </div>
+                                <div class="min-w-0">
+                                <p class="font-semibold text-gray-800 text-[10px] leading-tight">
+                                    Você escolhe o produto.
+                                </p>
+                            </div>
+                    </div>
+                </div>
+                <div>
+                    <img src="images/como-funciona-2.png" alt="">
+                    <div class="flex items-center gap-1 min-w-0">
+                            <div class="w-7 h-7 
+                                            flex items-center justify-center 
+                                            rounded-full
+                                            bg-[#FFD4D8] text-black shadow-sm">
+                                <div class="w-4 h-4 flex items-center justify-center">2</div>
+                                </div>
+                                <div class="min-w-0">
+                                <p class="font-semibold text-gray-800 text-[10px] leading-tight">
+                                    Nos envia a arte ou solicita a criação.
+                                </p>
+                            </div>
+                    </div>
+                <div>
+                    <img src="images/como-funciona-3.png" alt="">
+                    <div class="flex items-center gap-1 min-w-0">
+                            <div class="w-7 h-7 
+                                            flex items-center justify-center 
+                                            rounded-full
+                                            bg-[#FFD4D8] text-black shadow-sm">
+                                <div class="w-4 h-4 flex items-center justify-center">3</div>
+                                </div>
+                                <div class="min-w-0">
+                                <p class="font-semibold text-gray-800 text-[10px] leading-tight">
+                                    Aprovamos a arte e produzimos.
+                                </p>
+                    </div>
+                </div>
+                <div>
+                    <img src="images/como-funciona-4.png" alt="">
+                    <div class="flex items-center gap-1 min-w-0">
+                            <div class="w-7 h-7 
+                                            flex items-center justify-center 
+                                            rounded-full
+                                            bg-[#FFD4D8] text-black shadow-sm">
+                                <div class="w-4 h-4 flex items-center justify-center">4</div>
+                                </div>
+                                <div class="min-w-0">
+                                <p class="font-semibold text-gray-800 text-[10px] leading-tight">
+                                    Enviamos para o seu endereço.
+                                </p>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <img src="images/banner-3.png" alt=""> -->
        
     </main>
 </body>
