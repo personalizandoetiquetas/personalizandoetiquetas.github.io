@@ -1,0 +1,129 @@
+/* ============================================================
+   FOOTER — Rodapé do site e FAB do carrinho
+   ============================================================ */
+
+/* ── Rodapé ── */
+.site-footer {
+    background-color: var(--pink);
+    color: var(--white);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+}
+
+.site-footer i,
+.site-footer svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* ── FAB (Floating Action Button) ── */
+.fab-wrap {
+    position: fixed;
+    bottom: 16px;
+    right: 24px;
+    z-index: 40;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.fab-btn {
+    background-color: var(--black);
+    color: var(--white);
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background-color var(--transition), transform var(--transition);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.fab-btn:hover {
+    background-color: var(--pink);
+}
+
+.fab-btn:active {
+    transform: scale(0.95);
+}
+
+/* ── WhatsApp FAB (cor verde) ── */
+.fab-whatsapp {
+    background-color: var(--green-wpp);
+}
+
+.fab-whatsapp:hover {
+    background-color: var(--green-wpp-hover);
+}
+
+.fab-btn i,
+.fab-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* opcional: animação do botão (se quiser reutilizar) */
+@keyframes fab-point { 0%,100%{transform:translateX(0);}50%{transform:translateX(-8px);} }
+.fab-pointing{ animation: fab-point 0.6s ease-in-out infinite; }
+
+/* ── Tooltip (Balão) ── */
+@keyframes tooltip-sway { 0%{transform:translateX(-8px);}50%{transform:translateX(8px);}100%{transform:translateX(-8px);} }
+.whatsapp-tooltip {
+    position: absolute;
+    bottom: 75px;
+    right: calc(100% + 12px); /* fica à esquerda do botão */
+    background-color: var(--green-wpp);
+    color: var(--white);
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 50;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.whatsapp-tooltip.show { opacity:1; pointer-events:auto; }
+.whatsapp-tooltip.shaking { animation: tooltip-sway 0.6s ease-in-out infinite; }
+
+/* remove a ponta do balão */
+.tooltip-arrow { display:none; }
+
+/* Badge do FAB */
+#fab-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: #EF4444;
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--white);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#fab-badge:not(.hidden) { display:flex; }
+
+/* ── Espaço para o FAB não sobrepor conteúdo ── */
+.main-with-fab { margin-bottom: 70px; }

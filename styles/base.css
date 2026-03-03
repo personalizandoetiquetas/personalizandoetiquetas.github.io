@@ -1,0 +1,84 @@
+/* ============================================================
+   BASE — Reset, Variáveis CSS, Tipografia
+   ============================================================ */
+
+:root {
+    --pink:        #F03E7A;
+    --pink-light:  #FFF0F5;
+    --pink-mid:    #FFD6E7;
+    --pink-banner: #FFD4D8;
+    --gold:        #FF8C0F;
+    --black:       #111111;
+    --gray-dark:   #333333;
+    --gray-mid:    #777777;
+    --gray-light:  #F5F5F5;
+    --gray-border: #E8E8E8;
+    --white:       #FFFFFF;
+    --green-wpp:   #25D366;
+    --green-wpp-hover: #128C7E;
+
+    --radius-sm:   8px;
+    --radius:      12px;
+    --radius-lg:   16px;
+    --radius-full: 9999px;
+
+    --shadow-sm:   0 1px 4px rgba(0,0,0,0.06);
+    --shadow:      0 4px 16px rgba(0,0,0,0.08);
+    --shadow-lg:   0 8px 32px rgba(0,0,0,0.12);
+    --shadow-pink: 0 8px 24px rgba(240,62,122,0.15);
+
+    --transition: 0.2s ease;
+    --transition-slow: 0.3s ease;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--black);
+    background-color: #EEEEEE;
+    min-height: 100vh;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Utilitário de preço em monospace */
+.preco {
+    font-family: monospace;
+}
+
+/* Esconder scrollbar mantendo scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Utilitários usados pelo JS via classList */
+.hidden  { display: none !important; }
+.fixed   { position: fixed; }
+.inset-0 { inset: 0; }
+.z-50    { z-index: 50; }

@@ -6,24 +6,60 @@ function showAddedToast() {
     clearTimeout(toastTimeout);
 
     const toastHTML = `
-        <div id="added-toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-md bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 animate-in slide-in-from-bottom-10 duration-300">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="bg-green-100 p-2 rounded-full">
-                    <i data-lucide="check" class="w-5 h-5 text-green-600"></i>
+        <div id="added-toast" style="
+            position:fixed;
+            bottom:96px;
+            left:50%;
+            transform:translateX(-50%);
+            z-index:100;
+            width:90%;
+            max-width:448px;
+            background:white;
+            border-radius:16px;
+            box-shadow:0 20px 60px rgba(0,0,0,0.15);
+            border:1px solid #F0F0F0;
+            padding:16px;
+            overflow:hidden;
+        ">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                <div style="
+                    background:#DCFCE7;padding:8px;
+                    border-radius:50%;display:flex;
+                    align-items:center;justify-content:center;
+                ">
+                    <i data-lucide="check" style="width:20px;height:20px;color:#16A34A;"></i>
                 </div>
-                <p class="font-bold text-gray-900 text-sm">Item adicionado ao carrinho!</p>
+                <p style="font-weight:700;color:#1a1a1a;font-size:14px;">Item adicionado ao carrinho!</p>
             </div>
-            
-            <div class="flex gap-2">
-                <button id="open-cart-button" class="flex-1 bg-black text-white py-3 rounded-xl text-xs font-bold active:scale-95 transition-all">
+
+            <div style="display:flex;gap:8px;">
+                <button id="open-cart-button" style="
+                    flex:1;background:#111;color:white;
+                    padding:12px;border-radius:12px;
+                    font-size:12px;font-weight:700;
+                    border:none;cursor:pointer;
+                    transition:transform 0.15s;
+                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                     Abrir Carrinho
                 </button>
-                <button id="buy-continue-button" onclick="hideToast()" class="flex-1 bg-gray-100 text-gray-600 py-3 rounded-xl text-xs font-bold active:scale-95 transition-all">
+                <button id="buy-continue-button" onclick="hideToast()" style="
+                    flex:1;background:#F3F4F6;color:#4B5563;
+                    padding:12px;border-radius:12px;
+                    font-size:12px;font-weight:700;
+                    border:none;cursor:pointer;
+                    transition:transform 0.15s;
+                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                     Continuar Comprando
                 </button>
             </div>
-            
-            <div class="absolute bottom-0 left-0 h-1 bg-green-500 rounded-full transition-all duration-[6000ms] ease-linear w-full" id="toast-progress"></div>
+
+            <div id="toast-progress" style="
+                position:absolute;bottom:0;left:0;
+                height:4px;background:#22C55E;
+                border-radius:0 0 0 16px;
+                width:100%;
+                transition:width 6000ms linear;
+            "></div>
         </div>
     `;
 
@@ -32,26 +68,23 @@ function showAddedToast() {
 
     setTimeout(() => {
         const progress = document.getElementById('toast-progress');
-        if (progress) {
-            progress.style.transitionDuration = '6000ms';
-            progress.style.width = '0%';
-        }
+        if (progress) progress.style.width = '0%';
     }, 100);
 
-    toastTimeout = setTimeout(() => {
-        hideToast();
-    }, 6000);
+    toastTimeout = setTimeout(() => { hideToast(); }, 6000);
 }
 
 function hideToast() {
     const toast = document.getElementById('added-toast');
     if (toast) {
-        toast.classList.add('animate-out', 'fade-out', 'slide-out-to-bottom-10');
+        toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(20px)';
         setTimeout(() => toast.remove(), 300);
     }
 }
 
 window.showAddedToast = showAddedToast;
-window.hideToast = hideToast;
+window.hideToast      = hideToast;
 
 export { showAddedToast, hideToast };

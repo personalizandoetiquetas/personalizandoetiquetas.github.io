@@ -1,0 +1,30 @@
+.benefits{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.benefit{
+  background:#fff;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.05);
+  text-align:center;
+}
+
+.benefit h3{
+  margin-top:15px;
+  margin-bottom:8px;
+}
+
+.benefit p{
+  color:var(--gray);
+  font-size:14px;
+}
+
+@media(max-width:900px){
+  .hero,.product{grid-template-columns:1fr;}
+  .benefits{grid-template-columns:repeat(2,1fr);}
+  .reviews{grid-template-columns:1fr;}
+  .hero h1{font-size:38px;}
+}

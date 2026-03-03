@@ -2,33 +2,68 @@ import { PRODUCTS_DATA } from './data.js';
 import { formatCurrency } from './utils.js';
 
 function setupImageModal() {
+    if (document.getElementById('image-viewer-modal')) return;
+
     const modalHTML = `
-        <div id="image-viewer-modal" 
-             class="fixed inset-0 z-[60] hidden bg-black/20 backdrop-blur-[2px] flex items-center justify-center p-4 transition-all duration-300"
-             onclick="closeImageModal(event)">
-            
-            <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full overflow-hidden relative border border-gray-100">
-                
-                <div class="flex items-center justify-between p-4 border-b border-gray-100">
-                    <div class="w-8"></div>
-                    <h3 id="modal-image-title" class="font-bold text-gray-800 text-xs uppercase tracking-widest text-center flex-1"></h3>
-                    <button onclick="forceCloseModal()" class="text-gray-400 hover:text-black transition-colors">
-                        <i data-lucide="x" class="w-5 h-5"></i>
+        <div id="image-viewer-modal" style="
+            display:none;
+            position:fixed;inset:0;z-index:60;
+            background:rgba(0,0,0,0.2);
+            backdrop-filter:blur(2px);
+            align-items:center;justify-content:center;
+            padding:16px;
+        " onclick="closeImageModal(event)">
+
+            <div style="
+                background:white;border-radius:16px;
+                box-shadow:0 20px 60px rgba(0,0,0,0.15);
+                max-width:480px;width:100%;
+                overflow:hidden;position:relative;
+                border:1px solid #F0F0F0;
+            ">
+                <div style="
+                    display:flex;align-items:center;
+                    justify-content:space-between;
+                    padding:16px;
+                    border-bottom:1px solid #F0F0F0;
+                ">
+                    <div style="width:32px;"></div>
+                    <h3 id="modal-image-title" style="
+                        font-weight:700;color:#1a1a1a;
+                        font-size:11px;text-transform:uppercase;
+                        letter-spacing:0.1em;text-align:center;flex:1;
+                    "></h3>
+                    <button onclick="forceCloseModal()" style="
+                        color:#9CA3AF;background:none;border:none;
+                        cursor:pointer;padding:4px;
+                        display:flex;align-items:center;
+                    ">
+                        <i data-lucide="x" style="width:20px;height:20px;"></i>
                     </button>
                 </div>
 
-                <div class="bg-gray-50 flex items-center justify-center p-2">
-                    <img id="modal-image-content" src="" class="max-w-full h-auto object-contain max-h-[50vh] rounded-lg">
+                <div style="background:#F9FAFB;display:flex;align-items:center;justify-content:center;padding:8px;">
+                    <img id="modal-image-content" src="" style="
+                        max-width:100%;height:auto;
+                        object-fit:contain;max-height:50vh;
+                        border-radius:8px;
+                    ">
                 </div>
 
-                <div class="p-6 bg-white">
-                    <p id="modal-image-specs" class="text-gray-400 text-xs font-medium mb-1"></p>
-                    <div class="flex justify-between items-center">
-                        <div class="flex flex-col">
-                            <span id="modal-image-price" class="preco text-2xl font-black text-gray-900"></span>
-                            <span id="modal-selected-qty" class="text-[10px] font-bold text-gray-400 uppercase"></span>
+                <div style="padding:24px;background:white;">
+                    <p id="modal-image-specs" style="color:#9CA3AF;font-size:12px;font-weight:500;margin-bottom:4px;"></p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <div style="display:flex;flex-direction:column;">
+                            <span id="modal-image-price" class="preco" style="font-size:24px;font-weight:900;color:#1a1a1a;"></span>
+                            <span id="modal-selected-qty" style="font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;"></span>
                         </div>
-                        <button onclick="forceCloseModal()" class="bg-black text-white px-4 py-2 rounded-lg text-xs font-bold">
+                        <button onclick="forceCloseModal()" style="
+                            background:#111;color:white;
+                            padding:8px 16px;border-radius:8px;
+                            font-size:12px;font-weight:700;
+                            border:none;cursor:pointer;
+                            transition:background 0.2s;
+                        " onmouseover="this.style.background='#F03E7A'" onmouseout="this.style.background='#111'">
                             Fechar Visualização
                         </button>
                     </div>
@@ -37,9 +72,7 @@ function setupImageModal() {
         </div>
     `;
 
-    if (!document.getElementById('image-viewer-modal')) {
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
-    }
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
 }
 
 function openImageModal(productId) {
@@ -53,14 +86,11 @@ function openImageModal(productId) {
     document.getElementById('modal-image-content').src = product.image;
     document.getElementById('modal-image-title').innerText = product.title;
     document.getElementById('modal-image-specs').innerText = product.specs;
-    document.getElementById('modal-selected-qty').innerText =
-        `${selectedOption.qtd} unidades selecionadas`;
-    document.getElementById('modal-image-price').innerText =
-        formatCurrency(selectedOption.price);
+    document.getElementById('modal-selected-qty').innerText = `${selectedOption.qtd} unidades selecionadas`;
+    document.getElementById('modal-image-price').innerText = formatCurrency(selectedOption.price);
 
     const modal = document.getElementById('image-viewer-modal');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 
     lucide.createIcons();
@@ -74,13 +104,13 @@ function closeImageModal(event) {
 
 function forceCloseModal() {
     const modal = document.getElementById('image-viewer-modal');
-    modal.classList.add('hidden');
+    if (modal) modal.style.display = 'none';
     document.body.style.overflow = '';
 }
 
-window.setupImageModal = setupImageModal;
-window.openImageModal = openImageModal;
-window.closeImageModal = closeImageModal;
-window.forceCloseModal = forceCloseModal;
+window.setupImageModal  = setupImageModal;
+window.openImageModal   = openImageModal;
+window.closeImageModal  = closeImageModal;
+window.forceCloseModal  = forceCloseModal;
 
 export { setupImageModal, openImageModal, closeImageModal, forceCloseModal };

@@ -1,0 +1,66 @@
+/* ============================================================
+   CATEGORIES — Barra de categorias do catálogo
+   ============================================================ */
+
+/* O wrapper externo permite o scroll interno sem vazar pro body */
+.categories-bar {
+    background: var(--white);
+    border-bottom: 1px solid #EEEEEE;
+    overflow-x: auto;
+    overflow-y: visible;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.categories-bar::-webkit-scrollbar { display: none; }
+
+/* Inner alinhado com o header e o grid */
+.categories-bar-inner {
+    display: flex;
+    gap: 6px;
+    max-width: 960px;       /* alinha com header-inner e products-header */
+    margin: 0 auto;
+    padding: 10px 20px;     /* mesmo padding lateral do header */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Botão de categoria */
+.cat-btn {
+    flex-shrink: 0;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    background: #F3F3F3;
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-full);
+    color: #666;
+    transition: all var(--transition);
+    cursor: pointer;
+    white-space: nowrap;
+}
+.cat-btn:hover {
+    background: var(--pink-light);
+    color: var(--pink);
+    border-color: var(--pink-mid);
+}
+.cat-btn.active {
+    background: var(--pink);
+    color: #fff;
+    border-color: var(--pink);
+    box-shadow: 0 4px 12px rgba(240,62,122,0.25);
+}
+.cat-btn:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+
+/* Títulos */
+.category-header { display: flex; align-items: center; justify-content: space-between; }
+.category-title  { font-size: 17px; font-weight: 800; color: #111; }
+.item-count {
+    font-size: 11px; font-weight: 700; color: var(--gray-mid);
+    background: var(--white); padding: 3px 10px;
+    border-radius: var(--radius-full); border: 1px solid var(--gray-border);
+}
+
+@media (max-width: 480px) {
+    .cat-btn { padding: 6px 13px; font-size: 11px; }
+    .categories-bar-inner { padding: 8px 16px; }
+}

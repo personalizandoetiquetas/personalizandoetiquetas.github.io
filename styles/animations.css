@@ -1,0 +1,65 @@
+/* ============================================================
+   ANIMATIONS — Keyframes, Toast, Modal de imagem, Transições
+   ============================================================ */
+
+/* ── Toast "item adicionado" ── */
+@keyframes slideUp {
+    from { transform: translate(-50%, 100%); opacity: 0; }
+    to   { transform: translate(-50%, 0);    opacity: 1; }
+}
+
+#added-toast {
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+/* ── Modal de imagem do produto ── */
+#image-viewer-modal {
+    transition: opacity var(--transition-slow);
+}
+
+/* ── Shine das estrelas (index.html) ── */
+@keyframes shine {
+    0%   { background-position: -250% center; }
+    100% { background-position:  250% center; }
+}
+
+/* ── Transições de entrada/saída do Tailwind (mantidas para compatibilidade com toast.js) ── */
+@keyframes animate-in-slide-bottom {
+    from { transform: translateY(40px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes animate-out-slide-bottom {
+    from { transform: translateY(0);    opacity: 1; }
+    to   { transform: translateY(40px); opacity: 0; }
+}
+
+.animate-in.slide-in-from-bottom-10 {
+    animation: animate-in-slide-bottom 0.3s ease forwards;
+}
+
+.animate-out.slide-out-to-bottom-10 {
+    animation: animate-out-slide-bottom 0.3s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* ── Animação de entrada dos itens do carrinho ── */
+@keyframes slideInRight {
+    from { transform: translateX(20px); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+}
+
+.animate-in.slide-in-from-right {
+    animation: slideInRight 0.25s ease forwards;
+}
+
+/* ── Duração customizada ── */
+.duration-300 { animation-duration: 300ms; }

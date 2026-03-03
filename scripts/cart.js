@@ -17,21 +17,34 @@ function loadCartFromStorage() {
 
 function addToCart(productId) {
     const dropdown = document.getElementById(`dropdown-${productId}`);
-    const selectedIdx = parseInt(dropdown.dataset.selected || 0);
+    if (!dropdown) {
+        console.warn("Dropdown não encontrado para produto:", productId);
+        return;
+    }
 
+    const selectedIdx = parseInt(dropdown.dataset.selected || 0);
     const product = PRODUCTS_DATA.find(p => p.id === productId);
+    if (!product) return;
     const option = product.options[selectedIdx];
 
-    const cartItem = {
-        product: product,
-        option: option,
-        cartId: Date.now()
-    };
+    const existing = cart.find(i => i.product.id === productId && i.option.qtd === option.qtd);
 
-    cart.push(cartItem);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({
+            product: product,
+            option: option,
+            cartId: Date.now(),
+            quantity: 1
+        });
+    }
+
     saveCartToStorage();
     updateCartUI();
-    showAddedToast();
+    if (typeof showAddedToast === "function") {
+        showAddedToast();
+    }
 }
 
 function removeFromCart(cartId) {
@@ -48,58 +61,84 @@ function clearCart() {
     }
 }
 
+function changeQuantity(cartId, delta) {
+    const item = cart.find(i => i.cartId === cartId);
+    if (!item) return;
+
+    item.quantity = (item.quantity || 1) + delta;
+
+    if (item.quantity <= 0) {
+        if (confirm("Deseja remover este item do carrinho?")) {
+            cart = cart.filter(i => i.cartId !== cartId);
+        } else {
+            item.quantity = 1;
+        }
+    }
+
+    saveCartToStorage();
+    updateCartUI();
+}
+
 function updateCartUI() {
     const itemsContainer = document.getElementById('cart-items');
+    if (!itemsContainer) return;
+
     const totalDisplay = document.getElementById('cart-total');
-    const badgeHeader = document.getElementById('cart-badge');
-    const badgeFab = document.getElementById('fab-badge');
-    const footer = document.getElementById('cart-footer');
-    const emptyState = document.getElementById('cart-empty-state');
-    const btnClear = document.getElementById('btn-clear-cart'); // Pega o botão de limpar
+    const badgeHeader   = document.getElementById('cart-badge');
+    const badgeFab      = document.getElementById('fab-badge');
+    const footer        = document.getElementById('cart-footer');
+    const emptyState    = document.getElementById('cart-empty-state');
+    const btnClear      = document.getElementById('btn-clear-cart');
 
     const count = cart.length;
     badgeHeader.innerText = count;
-    badgeFab.innerText = count;
-    
-    if(count > 0) {
+    badgeFab.innerText    = count;
+
+    if (count > 0) {
         badgeHeader.classList.remove('hidden');
         badgeFab.classList.remove('hidden');
         footer.classList.remove('hidden');
-        emptyState.classList.add('hidden');
-        btnClear.classList.remove('hidden'); // MOSTRA o botão limpar
+        emptyState.style.display = 'none';
+        btnClear.classList.remove('hidden');
     } else {
         badgeHeader.classList.add('hidden');
         badgeFab.classList.add('hidden');
         footer.classList.add('hidden');
-        emptyState.classList.remove('hidden');
-        btnClear.classList.add('hidden');    // ESCONDE o botão limpar
+        emptyState.style.display = '';
+        btnClear.classList.add('hidden');
     }
 
-    // Renderiza Itens
+    // Renderiza itens
     itemsContainer.innerHTML = cart.map(item => `
-        <div class="flex gap-3 bg-white p-3 rounded-xl border border-gray-100 shadow-sm animate-in slide-in-from-right duration-300">
-            <div class="w-14 h-14 bg-gray-100 rounded-lg overflow-hidden shrink-0">
-                <img src="${item.product.image}" class="w-full h-full object-cover">
+        <div class="cart-item">
+            <div class="cart-item-img">
+                <img src="${item.product.image}" alt="${item.product.title}">
             </div>
-            <div class="flex-1 flex flex-col justify-between">
-                <div>
-                    <h4 class="font-bold text-sm text-gray-900 line-clamp-1">${item.product.title}</h4>
-                    <span class="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
-                        ${item.option.qtd} unidades
-                    </span>
-                </div>
-                <div class="flex justify-between items-center mt-1">
-                    <span class="preco font-bold text-sm text-gray-900">${formatCurrency(item.option.price)}</span>
-                    <button onclick="removeFromCart(${item.cartId})" class="text-red-400 hover:text-red-600 p-1">
-                        <i data-lucide="trash-2" class="w-4 h-4"></i>
-                    </button>
+            <div class="cart-item-body">
+                <div class="cart-item-name">${item.product.title}</div>
+                <span class="cart-item-badge">${item.option.qtd} unidades / pacote</span>
+                <div class="cart-item-row">
+                    <div>
+                        <div class="cart-item-price preco">${formatCurrency(item.option.price * (item.quantity || 1))}</div>
+                        <div class="cart-item-sub">${formatCurrency(item.option.price / item.option.qtd)} uni. · ${item.option.qtd * (item.quantity || 1)} unidades no total</div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:4px;">
+                        <div class="qty-controls">
+                            <button onclick="changeQuantity(${item.cartId}, -1)" class="qty-btn">−</button>
+                            <span class="qty-num">${item.quantity || 1}</span>
+                            <button onclick="changeQuantity(${item.cartId}, 1)" class="qty-btn">+</button>
+                        </div>
+                        <button onclick="removeFromCart(${item.cartId})" class="btn-remove-item">
+                            <i data-lucide="trash-2"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     `).join('');
 
-    // Calcula Total
-    const total = cart.reduce((acc, item) => acc + item.option.price, 0);
+    // Total
+    const total = cart.reduce((acc, item) => acc + item.option.price * (item.quantity || 1), 0);
     totalDisplay.innerText = formatCurrency(total);
 
     lucide.createIcons();
@@ -123,11 +162,13 @@ function checkoutWhatsApp() {
     let total = 0;
 
     cart.forEach(item => {
+        const qty = item.quantity || 1;
         message += `*${item.product.title}*\n`;
-        message += `   Qtd: ${item.option.qtd} un.\n`;
-        message += `   Valor: ${formatCurrency(item.option.price)}\n`;
+        message += `   Pacote: ${item.option.qtd} un. × ${qty} vez(es)\n`;
+        message += `   Total de etiquetas: ${item.option.qtd * qty}\n`;
+        message += `   Valor: ${formatCurrency(item.option.price * qty)}\n`;
         message += `------------------------------\n`;
-        total += item.option.price;
+        total += item.option.price * qty;
     });
 
     message += `\n*Valor Final: ${formatCurrency(total)}*`;
@@ -137,14 +178,22 @@ function checkoutWhatsApp() {
     window.open(url, '_blank');
 }
 
-window.saveCartToStorage = saveCartToStorage;
+window.saveCartToStorage  = saveCartToStorage;
 window.loadCartFromStorage = loadCartFromStorage;
-window.addToCart = addToCart;
-window.removeFromCart = removeFromCart;
-window.clearCart = clearCart;
-window.updateCartUI = updateCartUI;
-window.toggleCart = toggleCart;
-window.checkoutWhatsApp = checkoutWhatsApp;
+window.addToCart          = addToCart;
+window.removeFromCart     = removeFromCart;
+window.clearCart          = clearCart;
+window.updateCartUI       = updateCartUI;
+window.toggleCart         = toggleCart;
+window.checkoutWhatsApp   = checkoutWhatsApp;
+window.changeQuantity     = changeQuantity;
+
+window.addEventListener("load", () => {
+    if (sessionStorage.getItem("openCart") === "1") {
+        sessionStorage.removeItem("openCart");
+        setTimeout(() => { toggleCart(true); }, 300);
+    }
+});
 
 export {
     saveCartToStorage,
@@ -154,5 +203,6 @@ export {
     clearCart,
     updateCartUI,
     toggleCart,
-    checkoutWhatsApp
- };
+    checkoutWhatsApp,
+    changeQuantity
+};

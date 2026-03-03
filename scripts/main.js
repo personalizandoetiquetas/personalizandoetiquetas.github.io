@@ -5,6 +5,7 @@ import { setupImageModal, openImageModal, closeImageModal, forceCloseModal } fro
 import { init, renderCategories, setCategory, renderProducts } from './products.js';
 import { showAddedToast, hideToast } from './toast.js';
 import { toggleDropdown, selectOption } from './drop.js';
+import { initWhatsAppTooltip } from './whatsapp-tooltip.js';
 
 document.addEventListener('click', function(e) {
     const clickedDropdown = e.target.closest('[id^="dropdown-"]');
@@ -14,6 +15,7 @@ document.addEventListener('click', function(e) {
         hideToast();
         return;
     }
+
 
     document.querySelectorAll('[id^="menu-"]').forEach(menu => {
         const dropdown = menu.closest('[id^="dropdown-"]');
