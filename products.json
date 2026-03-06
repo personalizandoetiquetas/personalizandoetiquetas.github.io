@@ -7,23 +7,24 @@
       "image": "/images/produtos/mini-tag-padrao.png",
       "specs": "4x5cm • Frente e verso • Couche 250g",
       "options": [
-        {"qtd": 200,  "price": 130.00, "label": ""},
-        {"qtd": 500,  "price": 185.00, "label": ""},
-        {"qtd": 1000, "price": 210.00, "label": ""},
-        {"qtd": 2000, "price": 265.00, "label": ""}
+        {"qtd": 200,  "price": 142.99, "label": ""},
+        {"qtd": 500,  "price": 184.99, "label": "MAIS VENDIDO"},
+        {"qtd": 1000, "price": 210.99, "label": "Economize R$159,00"},
+        {"qtd": 2000, "price": 278.99, "label": ""}
       ]
     },
     {
       "id": 2,
       "category": "Tags",
       "title": "Tag Retangular Padrão",
-      "image": "/images/produtos/tag-retangular-padrao.png",
+      "image": "/images/produtos/tag-retangular-padrao-1080x1350px.png",
       "specs": "5x9cm • Frente e verso • Couche 250g",
       "options": [
-        {"qtd": 100,  "price": 135.00, "label": ""},
-        {"qtd": 250,  "price": 150.00, "label": "MAIS VENDIDO"},
-        {"qtd": 500,  "price": 205.00, "label": ""},
-        {"qtd": 1000, "price": 240.00, "label": "Economize R$170,00"}
+        {"qtd": 100,  "price": 134.99, "label": ""},
+        {"qtd": 250,  "price": 150.99, "label": "MAIS VENDIDO"},
+        {"qtd": 500,  "price": 203.99, "label": ""},
+        {"qtd": 1000, "price": 238.99, "label": "Economize R$170,00"},
+        {"qtd": 2000, "price": 444.99, "label": ""}
       ]
     },
     {
@@ -33,10 +34,10 @@
       "image": "/images/produtos/tag-corte-especial.png",
       "specs": "5x9cm • Frente e verso • Couche 250g",
       "options": [
-        {"qtd": 100,  "price": 999.00, "label": ""},
-        {"qtd": 250,  "price": 999.00, "label": ""},
-        {"qtd": 500,  "price": 999.00, "label": ""},
-        {"qtd": 1000, "price": 999.00, "label": ""}
+        {"qtd": 100,  "price": 178.99, "label": ""},
+        {"qtd": 250,  "price": 209.99, "label": "MAIS VENDIDO"},
+        {"qtd": 500,  "price": 255.99, "label": "Economize R$164,00"},
+        {"qtd": 1000, "price": 276.99, "label": ""}
       ]
     },
     {
@@ -46,39 +47,50 @@
       "image": "/images/produtos/tag-gravatinha.png",
       "specs": "5x13cm • Só Frente • Couche 250g",
       "options": [
-        {"qtd": 100,  "price": 999.00, "label": ""},
-        {"qtd": 250,  "price": 999.00, "label": ""},
-        {"qtd": 500,  "price": 999.00, "label": ""},
-        {"qtd": 1000, "price": 999.00, "label": ""}
+        {"qtd": 500,  "price": 333.99, "label": ""},
+        {"qtd": 1000, "price": 464.99, "label": ""}
       ]
     },
     {
       "id": 5,
+      "category": "Tags",
+      "title": "Mini-Tags Cortes Padrões",
+      "image": "/images/produtos/padroes-mini-tags.png",
+      "specs": "4x5cm • Só Frente • Couche 250g",
+      "options": [
+        {"qtd": 500,  "price": 244.99, "label": ""},
+        {"qtd": 1000,  "price": 298.99, "label": ""},
+        {"qtd": 2000,  "price": 381.99, "label": ""}
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Tags",
+      "title": "Mini-Tags Bijuterias",
+      "image": "/images/produtos/padroes-bijuterias.png",
+      "specs": "4x5cm • Só Frente • Couche 250g",
+      "options": [
+        {"qtd": 100,  "price": 166.99, "label": ""},
+        {"qtd": 250,  "price": 188.99, "label": "MAIS VENDIDO"},
+        {"qtd": 500,  "price": 212.99, "label": ""},
+        {"qtd": 1000, "price": 236.99, "label": ""}
+      ]
+    },
+    {
+      "id": 10,
       "category": "Cartões",
       "title": "Cartões de Visita Padrão",
       "image": "/images/produtos/cartao-visita-padrao.png",
       "specs": "9x5cm • Frente e verso • Couche 250g",
       "options": [
-        {"qtd": 100,  "price": 135.00, "label": ""},
-        {"qtd": 250,  "price": 150.00, "label": ""},
-        {"qtd": 500,  "price": 170.00, "label": ""},
-        {"qtd": 1000, "price": 190.00, "label": ""}
-      ]
-    },
-    {
-      "id": 6,
-      "category": "Adesivos",
-      "title": "Adesivo Lacre Redondo",
-      "image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&q=80&w=600",
-      "specs": "3x3cm • Vinil",
-      "options": [
-        {"qtd": 100, "price": 45.00,  "label": ""},
-        {"qtd": 250, "price": 80.00,  "label": ""},
-        {"qtd": 500, "price": 120.00, "label": ""}
+        {"qtd": 100,  "price": 134.99, "label": ""},
+        {"qtd": 250,  "price": 150.99, "label": "MAIS VENDIDO"},
+        {"qtd": 500,  "price": 180.99, "label": ""},
+        {"qtd": 1000, "price": 200.99, "label": "Economize R$161,00"}
       ]
     }
   ],
-  "CATEGORIES": ["Tags", "Cartões", "Adesivos", "Outros"],
+  "CATEGORIES": ["Tags", "Cartões", "Outros"],
   "ACTIVE_CATEGORY": "Tags",
   "WHATSAPP_NUMBER": "5584991969155",
   "FEATURED_PRODUCT_ID": 2
