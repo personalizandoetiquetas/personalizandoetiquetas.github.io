@@ -95,7 +95,7 @@
 /* ── Seção produto em destaque ── */
 .featured-section {
     background: linear-gradient(160deg, #fff4f6 0%, #ffffff 60%);
-    padding: 48px 20px 125px;
+    padding: 48px 20px 150px;
     position: relative;
     overflow: hidden;
 }
@@ -676,7 +676,7 @@
     }
 
     .featured-section {
-        padding: 36px 20px 125px;
+        padding: 36px 20px 175px;
     }
 
     .featured-img-frame {
